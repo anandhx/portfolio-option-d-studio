@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Option D · 3D studio · Anandhu Ashok</title>
+  <meta name="description" content="Preview portfolio for Anandhu Ashok. Style reference: 3D developer portfolios.">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#07080c; --text:#f4f7fb; --muted:#b7c3d1; --line:rgba(180,220,255,.18); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Manrope,sans-serif; }
+    a { color:#9be7ff; text-decoration:none; }
+    .stage { position:relative; height:100dvh; min-height:560px; overflow:hidden; }
+    canvas { position:absolute; inset:0; width:100%; height:100%; }
+    .veil { position:absolute; inset:auto 0 0 0; height:46%; background:linear-gradient(180deg, transparent, #07080c 78%); pointer-events:none; }
+    .intro { position:absolute; left:0; right:0; bottom:28px; width:min(1000px, calc(100% - 32px)); margin:0 auto; }
+    .kicker { letter-spacing:.16em; font-size:12px; color:#e8cb90; font-weight:700; }
+    h1 { font-family:Syne,sans-serif; font-size:clamp(42px, 7vw, 76px); line-height:.92; margin:8px 0; }
+    .links { display:flex; flex-wrap:wrap; gap:10px; }
+    .links a { border:1px solid var(--line); border-radius:999px; padding:8px 12px; color:var(--text); }
+    main { width:min(1000px, calc(100% - 32px)); margin:-8px auto 48px; }
+    h2 { font-family:Syne,sans-serif; font-size:32px; }
+    .grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+    article { border:1px solid var(--line); border-radius:18px; padding:16px; background:rgba(255,255,255,.03); }
+    article p, .when { color:var(--muted); }
+    .mini { font-size:11px; letter-spacing:.12em; font-weight:700; color:#e8cb90; }
+    .pub { color:#b7e3c2; }
+    footer { width:min(1000px, calc(100% - 32px)); margin:0 auto 32px; color:var(--muted); }
+    @media (max-width:800px) {
+      .stage { height:78dvh; min-height:460px; }
+      .grid { grid-template-columns:1fr; }
+      h1 { font-size:42px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="stage">
+    <canvas id="stage" aria-hidden="true"></canvas>
+    <div class="veil"></div>
+    <div class="intro">
+      <div class="kicker">OPTION D · 3D STUDIO</div>
+      <h1>Anandhu Ashok</h1>
+      <p>Cybersecurity and software developer · Digital University Kerala</p>
+      <div class="links">
+        <a href="#work">Work</a>
+        <a href="https://github.com/anandhx">GitHub</a>
+        <a href="https://www.linkedin.com/in/anandhu-ashok/">LinkedIn</a>
+        <a href="mailto:anandhuashok6959@gmail.com">Email</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <h2>Cybersecurity and development</h2>
+    <div class="grid">
+      <article><h3>Defense</h3><p>Network defense, security automation, phishing detection, firewall baselines, runtime detection. Falco, Sophos, PAN-OS, Mininet.</p></article>
+      <article><h3>Software</h3><p>Python, Flask, PHP, MySQL, JavaScript, TypeScript, Flutter, Linux, and Git.</p></article>
+      <article><h3>Now</h3><p>Software Developer, Network and Systems Security Lab. Project ASPER with Tata Elxsi, from March 2025.</p></article>
+    </div>
+    <h2 id="work">Selected work</h2>
+    <div class="grid">
+      <article><div class="mini">PRIVATE</div><h3>ASPER Dashboard</h3><p>TypeScript dashboard, login, and offline Docker release.</p></article>
+      <article><div class="mini">PRIVATE</div><h3>PhishAlert</h3><p>Phishing detection for the web and Flutter.</p></article>
+      <article><div class="mini">PRIVATE</div><h3>MediSmart</h3><p>Kerala pharmacy application.</p></article>
+      <article><div class="mini">PRIVATE</div><h3>Cafe Billing</h3><p>Offline point of sale and reports.</p></article>
+      <article><div class="mini">PRIVATE</div><h3>Dormetry</h3><p>Railway dormitory booking.</p></article>
+      <article><div class="mini pub">PUBLIC</div><h3><a href="https://github.com/anandhx/Kerala-Radio">Kerala Radio</a></h3><p>Flask player, plus College Canteen and MES College.</p></article>
+    </div>
+    <h2>Experience</h2>
+    <article><b>Digital University Kerala</b><p class="when">March 2025 – Present · Freelance in Kottayam from February 2024 · Python at MGU Innovation Foundation, June–September 2024 · IT administrator at MES College, April–June 2024. BCA, 2021–2024.</p></article>
+  </main>
+  <footer>Option D is an original 3D studio. Reference: project_3D_developer_portfolio and HamishMW/portfolio, about 7,100 and 3,600 stars.</footer>
+  <script src="three.min.js"></script>
+  <script>
+    (function () {
+      var canvas = document.getElementById("stage");
+      if (!canvas || !window.THREE) return;
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var narrow = matchMedia("(max-width: 800px)");
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !narrow.matches, alpha: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, narrow.matches ? 1.5 : 2));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.2;
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 40);
+      camera.position.set(0, 0.2, 7.2);
+      var env = new THREE.Scene();
+      function lamp(color, x, y, z, s) {
+        var m = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 16), new THREE.MeshBasicMaterial({ color: color }));
+        m.position.set(x, y, z); m.scale.setScalar(s); env.add(m);
+      }
+      lamp(0x102028, 0, 0, 0, 8);
+      lamp(0x7adfff, -4, 2, -2, 1.4);
+      lamp(0xe8cb90, 4, -1, 2, 1);
+      scene.environment = new THREE.PMREMGenerator(renderer).fromScene(env, 0.04).texture;
+      var group = new THREE.Group();
+      scene.add(group);
+      group.add(new THREE.Mesh(new THREE.TorusKnotGeometry(1.15, 0.36, 220, 32), new THREE.MeshStandardMaterial({ color: 0x143844, metalness: 1, roughness: 0.18, emissive: 0x0c4454, emissiveIntensity: 0.25 })));
+      group.add(new THREE.Mesh(new THREE.IcosahedronGeometry(2.05, 1), new THREE.MeshBasicMaterial({ color: 0xb7e7f5, wireframe: true, transparent: true, opacity: 0.28 })));
+      var ring = new THREE.Mesh(new THREE.TorusGeometry(2.55, 0.012, 12, 140), new THREE.MeshBasicMaterial({ color: 0xe8cb90 }));
+      ring.rotation.x = 1.2;
+      group.add(ring);
+      scene.add(new THREE.AmbientLight(0x9eb4c4, 0.4));
+      var key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(3, 4, 5); scene.add(key);
+      var rim = new THREE.PointLight(0x7adfff, 30, 14); rim.position.set(-3, 1, 2); scene.add(rim);
+      function resize() {
+        var w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.position.z = narrow.matches ? 8.4 : 7.2;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      addEventListener("resize", resize);
+      var run = true;
+      document.addEventListener("visibilitychange", function () { run = !document.hidden; if (run && !reduce) requestAnimationFrame(loop); });
+      function loop(t) {
+        if (!run) return;
+        var time = reduce ? 0.4 : t * 0.001;
+        group.rotation.y = time * 0.25;
+        group.rotation.x = Math.sin(time * 0.4) * 0.12;
+        ring.rotation.z = time * 0.2;
+        renderer.render(scene, camera);
+        if (!reduce) requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+    })();
+  </script>
+</body>
+</html>
