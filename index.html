@@ -3,42 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Option D · 3D studio · Anandhu Ashok</title>
-  <meta name="description" content="Preview portfolio for Anandhu Ashok. Style reference: 3D developer portfolios.">
+  <title>Option D · Studio · Anandhu Ashok</title>
+  <meta name="description" content="Anandhu Ashok studio. A lit sculpture and the full system map.">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#07080c; --text:#f4f7fb; --muted:#b7c3d1; --line:rgba(180,220,255,.18); }
+    :root { --bg:#07080c; --text:#f4f7fb; --muted:#b7c3d1; --line:rgba(180,220,255,.18); --gold:#e8cb90; }
     * { box-sizing:border-box; }
     body { margin:0; background:var(--bg); color:var(--text); font-family:Manrope,sans-serif; }
-    a { color:#9be7ff; text-decoration:none; }
+    a { color:#9be7ff; }
+    button, input { font:inherit; color:inherit; }
     .stage { position:relative; height:100dvh; min-height:560px; overflow:hidden; }
-    canvas { position:absolute; inset:0; width:100%; height:100%; }
-    .veil { position:absolute; inset:auto 0 0 0; height:46%; background:linear-gradient(180deg, transparent, #07080c 78%); pointer-events:none; }
-    .intro { position:absolute; left:0; right:0; bottom:28px; width:min(1000px, calc(100% - 32px)); margin:0 auto; }
-    .kicker { letter-spacing:.16em; font-size:12px; color:#e8cb90; font-weight:700; }
-    h1 { font-family:Syne,sans-serif; font-size:clamp(42px, 7vw, 76px); line-height:.92; margin:8px 0; }
-    .links { display:flex; flex-wrap:wrap; gap:10px; }
-    .links a { border:1px solid var(--line); border-radius:999px; padding:8px 12px; color:var(--text); }
-    main { width:min(1080px, calc(100% - 32px)); margin:0 auto 48px; }
-    h2 { font-family:Syne,sans-serif; font-size:32px; margin:28px 0 12px; }
-    .bar { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
-    button { font:inherit; font-weight:700; color:var(--text); background:transparent; border:1px solid var(--line); border-radius:999px; padding:8px 12px; cursor:pointer; }
-    button[aria-pressed="true"] { border-color:#9be7ff; color:#9be7ff; }
-    .case { display:grid; grid-template-columns:220px 1fr; gap:18px; border-top:1px solid var(--line); padding:22px 0; }
-    .case h3 { font-family:Syne,sans-serif; font-size:28px; margin:6px 0; }
-    .case p, .when { color:var(--muted); }
-    .mini { font-size:11px; letter-spacing:.12em; font-weight:700; color:#e8cb90; }
-    .pub { color:#b7e3c2; }
+    canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+    .veil { position:absolute; inset:auto 0 0 0; height:48%; background:linear-gradient(180deg, transparent, #07080c 80%); pointer-events:none; }
+    .intro { position:absolute; left:0; right:0; bottom:28px; width:min(1100px, calc(100% - 32px)); margin:0 auto; }
+    .kicker { letter-spacing:.16em; font-size:12px; color:var(--gold); font-weight:700; }
+    h1, h2, h3 { font-family:Syne,sans-serif; }
+    h1 { font-size:clamp(46px, 7vw, 84px); line-height:.9; margin:8px 0; }
+    .links { display:flex; flex-wrap:wrap; gap:8px; }
+    .links a, .bar button { border:1px solid var(--line); border-radius:999px; padding:8px 12px; color:var(--text); text-decoration:none; background:transparent; cursor:pointer; }
+    .bar button[aria-pressed="true"] { border-color:#9be7ff; color:#9be7ff; }
+    main { width:min(1100px, calc(100% - 28px)); margin:0 auto 48px; }
+    .maphead { display:flex; justify-content:space-between; gap:12px; align-items:end; flex-wrap:wrap; }
+    .board { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; margin-top:12px; }
+    .cols { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+    .col h2 { font-size:13px; letter-spacing:.14em; color:var(--gold); }
+    .node { display:block; width:100%; text-align:left; margin:0 0 6px; padding:8px 10px; border-radius:12px; border:1px solid var(--line); background:rgba(255,255,255,.03); cursor:pointer; }
+    .node[aria-pressed="true"] { border-color:#9be7ff; background:rgba(155,231,255,.08); }
+    .node small { display:block; color:var(--muted); }
+    .detail { position:sticky; top:16px; border:1px solid var(--line); border-radius:22px; padding:20px; background:rgba(255,255,255,.03); min-height:280px; }
+    .detail h3 { font-size:clamp(28px, 4vw, 42px); margin:8px 0; }
+    .muted { color:var(--muted); }
+    .pipe { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+    .pipe div { flex:1 1 120px; border:1px solid var(--line); border-radius:14px; padding:10px; }
+    .pipe b { display:block; color:var(--gold); font-family:Syne,sans-serif; }
     .stack { display:flex; flex-wrap:wrap; gap:6px; }
     .stack span { border:1px solid var(--line); border-radius:999px; padding:4px 8px; font-size:13px; }
-    .built { margin:8px 0 0; padding-left:18px; }
-    .built li { margin:4px 0; }
-    .meta { color:var(--muted); font-size:13px; letter-spacing:.08em; }
-    footer { width:min(1080px, calc(100% - 32px)); margin:0 auto 32px; color:var(--muted); }
+    input[type="search"] { width:100%; margin:8px 0; background:transparent; border:1px solid var(--line); border-radius:12px; padding:10px 12px; }
+    .path { margin-top:28px; }
+    .path article { border-top:1px solid var(--line); padding:14px 0; }
+    footer { width:min(1100px, calc(100% - 28px)); margin:0 auto 28px; color:var(--muted); }
     @media (max-width:800px) {
       .stage { height:78dvh; min-height:460px; }
-      .case { grid-template-columns:1fr; gap:6px; }
-      h1 { font-size:42px; }
+      .board, .cols { grid-template-columns:1fr; }
+      .detail { position:static; }
+      h1 { font-size:44px; }
     }
   </style>
 </head>
@@ -47,60 +55,73 @@
     <canvas id="stage" aria-hidden="true"></canvas>
     <div class="veil"></div>
     <div class="intro">
-      <div class="kicker">OPTION D · 3D STUDIO</div>
+      <div class="kicker">OPTION D · STUDIO</div>
       <h1>Anandhu Ashok</h1>
-      <p>Cybersecurity and software developer · Digital University Kerala</p>
+      <p>Cybersecurity and software developer · Digital University Kerala · 35 systems on the map below.</p>
       <div class="links">
-        <a href="#work">Work</a>
+        <a href="#map">System map</a>
         <a href="https://github.com/anandhx">GitHub</a>
         <a href="https://www.linkedin.com/in/anandhu-ashok/">LinkedIn</a>
         <a href="mailto:anandhuashok6959@gmail.com">Email</a>
       </div>
     </div>
   </header>
-  <main>
-    <h2 id="work">The build record</h2>
-    <p class="when">Software Developer on the Network and Systems Security Lab at Digital University Kerala. Project ASPER is a MeitY-funded security automation system for enterprise networks, with Tata Elxsi. The cases below are the systems behind the title: security tools, operational products, and public sites.</p>
-    <div class="bar" id="filters"></div>
-    <div id="cases"></div>
-    <h2>Experience</h2>
-    <article class="case"><div class="meta">MAR 2025 – PRESENT</div><div><h3>Software Developer</h3><p class="when">Digital University Kerala, Technopark. Development team, Network and Systems Security Lab.</p></div></article>
-    <article class="case"><div class="meta">FEB 2024 – PRESENT</div><div><h3>Freelance Developer</h3><p class="when">Kottayam. Billing, pharmacy, parking, dormitory booking, and security applications, from data model to interface.</p></div></article>
-    <article class="case"><div class="meta">JUN 2024 – SEP 2024</div><div><h3>Python Developer</h3><p class="when">MGU Innovation Foundation. Python backend. IT administrator at MES Golden Jubilee College, April–June 2024. BCA, 2021–2024.</p></div></article>
+  <main id="map">
+    <div class="maphead">
+      <h2>System map</h2>
+      <div class="bar" id="filters"></div>
+    </div>
+    <div class="board">
+      <div>
+        <input id="q" type="search" placeholder="Filter the map" aria-label="Filter the map">
+        <div class="cols" id="cols"></div>
+      </div>
+      <article class="detail" id="detail" aria-live="polite"></article>
+    </div>
+    <section class="path">
+      <h2>Experience</h2>
+      <article><b>Software Developer · Digital University Kerala</b><p class="muted">March 2025 – Present, Technopark. Development team, Network and Systems Security Lab. Project ASPER with Tata Elxsi.</p></article>
+      <article><b>Freelance Developer · Kottayam</b><p class="muted">February 2024 – Present. Billing, pharmacy, parking, dormitory booking, and security applications.</p></article>
+      <article><b>Python Developer · MGU Innovation Foundation</b><p class="muted">June 2024 – September 2024. IT administrator at MES Golden Jubilee College, April–June 2024. BCA, 2021–2024.</p></article>
+    </section>
   </main>
-  <footer>Option D is an original 3D studio. Reference: project_3D_developer_portfolio and HamishMW/portfolio, about 7,100 and 3,600 stars.</footer>
+  <footer>Preview D. The live portfolio remains <a href="https://anandhx.github.io/">anandhx.github.io</a> until one option is selected.</footer>
+  <script type="application/json" id="data">[{"id": "asper", "name": "ASPER Dashboard", "vis": "Private", "area": "Security", "stack": ["TypeScript", "Docker", "Authentication"], "brief": "Dashboard, authentication, and an offline Docker release for Project ASPER.", "parts": ["Login service", "Operator dashboard", "Offline Docker release"], "place": "Network and Systems Security Lab", "href": ""}, {"id": "phish", "name": "PhishAlert", "vis": "Private", "area": "Security", "stack": ["Web", "Flutter", "Detection"], "brief": "Link and domain review, with a blacklist and an audit log, on the web and in Flutter.", "parts": ["Website client", "Flutter client", "Blacklist and audit log"], "place": "Private security product", "href": ""}, {"id": "forge", "name": "Image Forgery Detection", "vis": "Private", "area": "Security", "stack": ["Python", "Flask"], "brief": "Flags manipulated images from inconsistencies in the image data.", "parts": ["Flask service", "Image checks", "Result view"], "place": "Private security tool", "href": ""}, {"id": "guard", "name": "Tech Guard", "vis": "Private", "area": "Security", "stack": ["Web", "Telegram", "Voice"], "brief": "Security assistant with alerts, Malayalam voice commands, and camera-based detection.", "parts": ["Alert feed", "Telegram assistant", "Camera detection"], "place": "Private security assistant", "href": ""}, {"id": "medi", "name": "MediSmart", "vis": "Private", "area": "Operations", "stack": ["Python", "Inventory", "Checkout"], "brief": "Kerala pharmacy system: prescription reading, store pickup, rack stock, and INR checkout.", "parts": ["Prescription reader", "Rack stock", "INR checkout"], "place": "Kerala pharmacy", "href": ""}, {"id": "cafe", "name": "Cafe Billing", "vis": "Private", "area": "Operations", "stack": ["TypeScript", "SQLite", "Excel"], "brief": "Offline point of sale with accounts, reports, print, and Excel.", "parts": ["Billing desk", "Accounts and reports", "Print and Excel"], "place": "Offline counter", "href": ""}, {"id": "dorm", "name": "Dormetry", "vis": "Private", "area": "Operations", "stack": ["Flutter", "Flask"], "brief": "One application for dormitory staff, the supervisor, and the owner.", "parts": ["Staff view", "Supervisor view", "Owner view"], "place": "Railway dormitory", "href": ""}, {"id": "wait", "name": "WaitHall", "vis": "Private", "area": "Operations", "stack": ["Python", "Booking"], "brief": "Seat booking for air-conditioned railway waiting halls.", "parts": ["Seat map", "Counter flow", "Booking record"], "place": "Railway waiting hall", "href": ""}, {"id": "park", "name": "Railway Parking", "vis": "Private", "area": "Operations", "stack": ["Flask", "HTML"], "brief": "Multi-location station parking for counter staff.", "parts": ["Locations", "Counter entry", "Parking record"], "place": "Railway stations", "href": ""}, {"id": "track", "name": "Vehicle Tracking", "vis": "Private", "area": "Operations", "stack": ["Web", "Roles"], "brief": "Vehicles, employees, leave, and entry logs for a company site.", "parts": ["Vehicle register", "Leave", "Gate log"], "place": "Company site", "href": ""}, {"id": "vms", "name": "Vehicle Management", "vis": "Private", "area": "Operations", "stack": ["Web", "Roles"], "brief": "Vehicle management with separate admin, mechanic, and user roles.", "parts": ["Admin", "Mechanic", "User"], "place": "Workshop roles", "href": ""}, {"id": "jobs", "name": "Bridgex Jobs", "vis": "Private", "area": "Operations", "stack": ["Python", "Telegram", "SQLite"], "brief": "Job alerts and resume scoring delivered in Telegram.", "parts": ["Job alerts", "Resume scoring", "SQLite store"], "place": "Telegram", "href": ""}, {"id": "blind", "name": "BlindsHelper", "vis": "Private", "area": "Operations", "stack": ["Web", "Voice"], "brief": "Voice navigation, screen reading, and magnification for low-vision users.", "parts": ["Voice navigation", "Screen reading", "Magnification"], "place": "Access tool", "href": ""}, {"id": "garage", "name": "Auto Service Dashboard", "vis": "Private", "area": "Operations", "stack": ["Web", "Inventory"], "brief": "Spare parts, accessories, and garage booking. Final-year project.", "parts": ["Spare parts", "Accessories", "Garage booking"], "place": "Final-year project", "href": ""}, {"id": "train", "name": "Train Tracker", "vis": "Private", "area": "Operations", "stack": ["Web"], "brief": "Live rail monitoring. A college project.", "parts": ["Live train view", "Rail monitoring"], "place": "College project", "href": ""}, {"id": "xplore", "name": "Xplore", "vis": "Private", "area": "Operations", "stack": ["Flask"], "brief": "Travel planning and a business directory.", "parts": ["Travel planning", "Business directory"], "place": "Flask application", "href": ""}, {"id": "ev", "name": "EV Service Station", "vis": "Private", "area": "Operations", "stack": ["Web"], "brief": "On-demand charging and mechanical support.", "parts": ["Charging request", "Mechanical support"], "place": "Mobile service", "href": ""}, {"id": "craft", "name": "Craft Marketplace", "vis": "Private", "area": "Operations", "stack": ["PHP", "MySQL"], "brief": "Marketplace for handmade goods.", "parts": ["Listings", "MySQL catalogue"], "place": "PHP and MySQL", "href": ""}, {"id": "eden", "name": "Eden Garden", "vis": "Private", "area": "Operations", "stack": ["Web"], "brief": "Website for an event-planning studio.", "parts": ["Studio site", "Event enquiry"], "place": "Event planners", "href": ""}, {"id": "events", "name": "Event Management", "vis": "Private", "area": "Operations", "stack": ["Web"], "brief": "Event management system.", "parts": ["Event records", "Event desk"], "place": "Private system", "href": ""}, {"id": "canteen", "name": "College Canteen", "vis": "Public", "area": "Public", "stack": ["PHP", "MySQL"], "brief": "Campus canteen with a menu, inventory, and ordering.", "parts": ["Menu", "Inventory", "Orders"], "place": "College campus", "href": "https://github.com/anandhx/college-canteen-mini-project"}, {"id": "radio", "name": "Kerala Radio", "vis": "Public", "area": "Public", "stack": ["Flask", "Python"], "brief": "Web player for Kerala radio stations.", "parts": ["Station list", "Player", "Flask app"], "place": "Public web", "href": "https://github.com/anandhx/Kerala-Radio"}, {"id": "mes", "name": "MES College Kottayam", "vis": "Public", "area": "Public", "stack": ["HTML", "CSS"], "brief": "College site for departments, admissions, and events.", "parts": ["Departments", "Admissions", "Events"], "place": "MES Golden Jubilee College", "href": "https://github.com/anandhx/mes-kottayam"}, {"id": "nurse", "name": "Nursing Locker", "vis": "Public", "area": "Public", "stack": ["HTML"], "brief": "BSc Nursing question papers and study notes.", "parts": ["Question papers", "Study notes"], "place": "Public archive", "href": "https://github.com/anandhx/Nursing-Locker"}, {"id": "bus", "name": "Bus World Erumeli", "vis": "Public", "area": "Public", "stack": ["HTML", "CSS"], "brief": "Site for a vehicle accessories shop.", "parts": ["Shop pages", "Accessories"], "place": "Erumeli", "href": "https://github.com/anandhx/bus-world-erumely"}, {"id": "herb", "name": "MA Herbals", "vis": "Public", "area": "Public", "stack": ["HTML", "CSS"], "brief": "Site for a herbal hair-care brand.", "parts": ["Brand story", "Hair-care range"], "place": "Public web", "href": "https://github.com/anandhx/ma_herbals"}, {"id": "paint", "name": "Perfect Painting", "vis": "Public", "area": "Public", "stack": ["HTML"], "brief": "Bill generator for a painting business.", "parts": ["Bill form", "Generated bill"], "place": "Public web", "href": "https://github.com/anandhx/Perfect-Painting"}, {"id": "sand", "name": "Plakkattu", "vis": "Public", "area": "Public", "stack": ["HTML", "CSS"], "brief": "Site for an M-sand and building-materials yard in Kottayam.", "parts": ["Materials", "Yard details"], "place": "Kottayam", "href": "https://github.com/anandhx/Plakkattu"}, {"id": "bake", "name": "The Baking Hub", "vis": "Public", "area": "Public", "stack": ["HTML", "CSS"], "brief": "Mobile site for a bakery.", "parts": ["Mobile layout", "Bakery pages"], "place": "Public web", "href": "https://github.com/anandhx/thebakinghub"}, {"id": "jinsho", "name": "Jinsho", "vis": "Public", "area": "Public", "stack": ["HTML", "CSS"], "brief": "Portfolio site for an interior studio.", "parts": ["Studio work", "Interior pages"], "place": "Public web", "href": "https://github.com/anandhx/portfolio-jinsho"}, {"id": "menu", "name": "Smart Menu", "vis": "Public", "area": "Public", "stack": ["HTML"], "brief": "A menu site.", "parts": ["Menu page"], "place": "Public web", "href": "https://github.com/anandhx/fd"}, {"id": "tvm", "name": "Discover Trivandrum", "vis": "Public", "area": "Public", "stack": ["HTML", "CSS"], "brief": "A guide to Thiruvananthapuram.", "parts": ["City guide", "Place pages"], "place": "Public web", "href": "https://github.com/anandhx/tvm"}, {"id": "serena", "name": "Serena", "vis": "Public", "area": "Public", "stack": ["Python"], "brief": "Python virtual assistant for everyday tasks.", "parts": ["Assistant", "Everyday tasks"], "place": "Python", "href": "https://github.com/anandhx/Serena"}, {"id": "tasks", "name": "Task Management", "vis": "Public", "area": "Public", "stack": ["Python"], "brief": "A task management system.", "parts": ["Task list", "Python app"], "place": "Python", "href": "https://github.com/anandhx/Task-Management-System"}, {"id": "remind", "name": "Reminder Bot", "vis": "Public", "area": "Public", "stack": ["Python"], "brief": "Python bot for event reminders.", "parts": ["Event reminders", "Python bot"], "place": "Python", "href": "https://github.com/anandhx/Reminder-Bot"}]</script>
   <script>
-    const cases = [
-      ["Security","ASPER Dashboard","Private","TypeScript","Docker","Auth","Dashboard, authentication, and an offline Docker release for Project ASPER.","Login service","Operator dashboard","Offline Docker package"],
-      ["Security","PhishAlert","Private","Web","Flutter","Detection","Link and domain review with a blacklist and an audit log.","Website client","Flutter client","Audit log"],
-      ["Security","Image Forgery Detection","Private","Python","Flask","Vision","Flags manipulated images from inconsistencies in the image data.","Flask service","Image checks","Result view"],
-      ["Security","Tech Guard","Private","Web","Telegram","Voice","Security assistant with alerts, Malayalam voice, and camera-based detection.","Alert feed","Telegram assistant","Camera detection"],
-      ["Products","MediSmart","Private","Python","Inventory","Checkout","Kerala pharmacy system for prescriptions, store pickup, rack stock, and INR checkout.","Prescription reader","Rack stock","INR checkout"],
-      ["Products","Cafe Billing","Private","TypeScript","SQLite","Reports","Offline point of sale with accounts, reports, print, and Excel.","Billing desk","Accounts","Excel export"],
-      ["Products","Dormetry","Private","Flutter","Flask","Roles","One application for dormitory staff, supervisor, and owner.","Staff view","Supervisor view","Owner view"],
-      ["Products","WaitHall","Private","Python","Booking","Counter","Seat booking for air-conditioned railway waiting halls.","Seat map","Counter flow","Booking record"],
-      ["Products","Railway Parking","Private","Flask","HTML","Operations","Multi-location station parking for counter staff.","Locations","Counter entry","Parking record"],
-      ["Products","Vehicle Tracking","Private","Web","Roles","Logs","Vehicles, employees, leave, and entry logs for a company site.","Vehicle register","Leave","Gate log"],
-      ["Products","Bridgex Jobs","Private","Python","Telegram","SQLite","Job alerts and resume scoring delivered in Telegram.","Job alerts","Resume scoring","SQLite store"],
-      ["Products","BlindsHelper","Private","Web","Voice","Access","Voice navigation, screen reading, and magnification for low-vision users.","Voice navigation","Screen reading","Magnification"],
-      ["Public","College Canteen","Public","PHP","MySQL","Ordering","Campus canteen with menu, inventory, and ordering.","Menu","Inventory","Orders","https://github.com/anandhx/college-canteen-mini-project"],
-      ["Public","Kerala Radio","Public","Flask","Audio","Web","Web player for Kerala radio stations.","Station list","Player","Flask app","https://github.com/anandhx/Kerala-Radio"],
-      ["Public","MES College Kottayam","Public","HTML","CSS","Content","College site for departments, admissions, and events.","Departments","Admissions","Events","https://github.com/anandhx/mes-kottayam"],
-      ["Public","Nursing Locker","Public","HTML","Notes","Archive","BSc Nursing question papers and study notes.","Papers","Notes","Archive","https://github.com/anandhx/Nursing-Locker"],
-      ["Public","Bus World Erumeli","Public","HTML","CSS","Commerce","Site for a vehicle accessories business.","Catalogue","Shop page","Contact","https://github.com/anandhx/bus-world-erumely"]
-    ];
-    const filters = ["All","Security","Products","Public"];
-    let filter = "All";
+    const WORK = JSON.parse(document.getElementById("data").textContent);
+    const filters = ["All","Security","Operations","Public"];
+    let area = "All";
+    let current = "asper";
+    const fromHash = location.hash.slice(1);
+    if (WORK.some(p => p.id === fromHash)) current = fromHash;
+    const cols = document.getElementById("cols");
+    const detail = document.getElementById("detail");
     const bar = document.getElementById("filters");
-    const root = document.getElementById("cases");
-    function drawBar() { bar.innerHTML = filters.map(f => `<button type="button" data-f="${f}" aria-pressed="${f===filter}">${f}</button>`).join(""); }
-    function draw() {
-      root.innerHTML = cases.filter(c => filter === "All" || c[0] === filter).map(c => {
-        const link = c[10] ? `<p><a href="${c[10]}">Repository</a></p>` : `<p class="when">Private build. Named here, source stays private.</p>`;
-        return `<article class="case"><div><div class="${c[2]==="Public"?"mini pub":"mini"}">${c[2].toUpperCase()} · ${c[0].toUpperCase()}</div><div class="stack"><span>${c[3]}</span><span>${c[4]}</span><span>${c[5]}</span></div></div><div><h3>${c[1]}</h3><p>${c[6]}</p><ul class="built"><li>${c[7]}</li><li>${c[8]}</li><li>${c[9]}</li></ul>${link}</div></article>`;
-      }).join("");
+    const q = document.getElementById("q");
+    function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+    function visible() {
+      const query = q.value.trim().toLowerCase();
+      return WORK.filter(p => (area === "All" || p.area === area) && (!query || (p.name + " " + p.stack.join(" ") + " " + p.brief).toLowerCase().includes(query)));
     }
-    bar.addEventListener("click", e => { if (!e.target.dataset.f) return; filter = e.target.dataset.f; drawBar(); draw(); });
+    function drawBar() { bar.innerHTML = filters.map(f => `<button type="button" data-f="${f}" aria-pressed="${f===area}">${f}</button>`).join(""); }
+    function draw() {
+      const rows = visible();
+      if (rows.length && !rows.some(p => p.id === current)) current = rows[0].id;
+      const groups = ["Security","Operations","Public"].map(name => {
+        const items = rows.filter(p => p.area === name);
+        if (!items.length) return "";
+        return `<section class="col"><h2>${name.toUpperCase()}</h2>${items.map(p => `<button class="node" type="button" data-id="${p.id}" aria-pressed="${p.id===current}"><b>${esc(p.name)}</b><small>${esc(p.vis)}</small></button>`).join("")}</section>`;
+      }).join("");
+      cols.innerHTML = groups || `<p class="muted">Nothing on the map matches.</p>`;
+      const p = rows.find(x => x.id === current);
+      if (!p) { detail.innerHTML = ""; return; }
+      const access = p.href ? `<p><a href="${esc(p.href)}">Repository</a></p>` : `<p class="muted">Private repository.</p>`;
+      detail.innerHTML = `<div class="kicker">${esc(p.vis.toUpperCase())} · ${esc(p.area.toUpperCase())}</div><h3>${esc(p.name)}</h3><p>${esc(p.brief)}</p><p class="muted">${esc(p.place)}</p><div class="pipe">${p.parts.map((part,i)=>`<div><b>${String(i+1).padStart(2,"0")}</b>${esc(part)}</div>`).join("")}</div><div class="stack">${p.stack.map(s=>`<span>${esc(s)}</span>`).join("")}</div>${access}`;
+      if (location.hash !== "#" + p.id) history.replaceState(null, "", "#" + p.id);
+    }
+    bar.addEventListener("click", e => { if (!e.target.dataset.f) return; area = e.target.dataset.f; drawBar(); draw(); });
+    cols.addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (!b) return; current = b.dataset.id; draw(); });
+    q.addEventListener("input", draw);
     drawBar();
     draw();
   </script>
@@ -138,8 +159,15 @@
       scene.add(new THREE.AmbientLight(0x9eb4c4, 0.4));
       var key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(3, 4, 5); scene.add(key);
       var rim = new THREE.PointLight(0x7adfff, 30, 14); rim.position.set(-3, 1, 2); scene.add(rim);
+      var pointer = { x: 0, y: 0 };
+      addEventListener("pointermove", function (e) {
+        if (narrow.matches || reduce) return;
+        pointer.x = e.clientX / innerWidth - 0.5;
+        pointer.y = e.clientY / innerHeight - 0.5;
+      });
       function resize() {
         var w = canvas.clientWidth, h = canvas.clientHeight;
+        if (!w || !h) return;
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         camera.position.z = narrow.matches ? 8.4 : 7.2;
@@ -152,8 +180,8 @@
       function loop(t) {
         if (!run) return;
         var time = reduce ? 0.4 : t * 0.001;
-        group.rotation.y = time * 0.25;
-        group.rotation.x = Math.sin(time * 0.4) * 0.12;
+        group.rotation.y = time * 0.22 + pointer.x * 0.45;
+        group.rotation.x = Math.sin(time * 0.35) * 0.1 + pointer.y * 0.2;
         ring.rotation.z = time * 0.2;
         renderer.render(scene, camera);
         if (!reduce) requestAnimationFrame(loop);
